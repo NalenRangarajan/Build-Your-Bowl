@@ -1,0 +1,24 @@
+﻿@page
+@model Website.Pages.Shared.ReviewsModel
+@{
+	ViewData["Title"] = "Reviews";
+}
+
+<form method="post">
+	<h2 class="category-name">Reviews</h2>
+
+	<textarea name="ReviewText" cols="40" rows="6" value="@Model.ReviewText"></textarea>
+	<p>&#13;</p>
+	<input type="submit" value="Add Review"/>
+
+
+	@foreach(@BuildYourBowl.Data.Review r in Model.AllReviews)
+	{
+		<div class="review">
+			<p>@r.ReviewMessage</p>
+			<p>@r.ReviewTime</p>
+		</div>
+	}
+</form>
+
+

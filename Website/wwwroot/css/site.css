@@ -1,0 +1,125 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.category {
+    border-bottom: 5px solid lightgray; 
+    margin: 20px;
+}
+
+.category-name {
+    text-align: left;
+    font-weight: bold;
+}
+
+ul > .item-selection {
+    list-style-type: none;
+    border: 5px solid black;
+    border-radius: 20px;
+    margin: 10px;
+    display: inline-block;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: top;
+    min-height: 200px;
+    min-width: 200px;
+
+}
+
+.name {
+    font-weight: bold;
+}
+
+.price::before {
+    content: "Price: $";
+}
+
+.calories::before {
+    content: "Calories: ";
+}
+
+.box-item {
+    border: 3px solid black;
+}
+
+.ingredients-name {
+    min-width: 150px;
+}
+
+.ingredients-cals {
+    min-width: 140px;
+}
+
+.ingredients-cost {
+    min-width: 250px;
+}
+
+.salsa-name {
+    min-width: 450px;
+}
+
+.tables {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.salsa-table, .ingredients-table {
+    flex: 1;
+    margin: 10px;
+    overflow-x: auto;
+}
+
+.text-item {
+    margin: 15px;
+}
+
+form#menu-database {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto auto;
+}
+
+#search, .text-center {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#filters {
+    display: flex;
+    flex-direction: column;
+}
+
+#filters input[type=number] {
+    width: 4rem;
+}
+
+#filters h4 {
+    margin-bottom: 0.2rem;
+    margin-top: 2rem;
+}
+
+.review {
+    border-bottom: 5px solid black;
+    margin: 20px;
+}

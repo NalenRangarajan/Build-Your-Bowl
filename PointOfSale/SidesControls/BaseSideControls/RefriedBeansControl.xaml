@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="BuildYourBowl.PointOfSale.RefriedBeansControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BuildYourBowl.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="266">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="10,10,0,0" FontSize="20" Grid.Row="0" Text="{Binding Path=Name}"/>
+        <TextBlock Grid.Row="1" Margin="10,10,0,0" Text="{Binding Path=Description}"/>
+        <ComboBox Grid.Row="2" FontSize="20" Margin="10,15,10,15" ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=SizeType}"/>
+        <CheckBox x:Name="CheddarCheeseBox" Margin="10,10,5,0" FontSize="15" Grid.Row="3" IsChecked="{Binding Path=CheddarCheese}">Cheddar Cheese</CheckBox>
+        <CheckBox x:Name="OnionsBox" Margin="10,10,5,0" Grid.Row="4" FontSize="15" IsChecked="{Binding Path=Onions}">Onions</CheckBox>
+        <DockPanel Margin="10,10,0,0" Grid.Row="5">
+            <TextBlock>Calories:</TextBlock>
+            <TextBlock Margin="20,0,0,0" Text="{Binding Path=Calories}"/>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

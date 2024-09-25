@@ -1,0 +1,179 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form id="menu-database">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Build Your Bowl!</h1>
+        <h3>We hope that you enjoy all that we have to offer!</h3>
+    </div>
+
+    <div id="search">
+        <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+        <input type="submit" value="Search" />
+    </div>
+    <div id="filters">
+        <h4>Calorie Count</h4>
+        <div>
+            Between
+            <input name="CalorieMin" type="number" min="0" max="3000" step="1" placeholder="min" value="@Model.CalorieMin"/>
+            and
+            <input name="CalorieMax" type="number" min="0" max="3000" step="1" placeholder="max" value="@Model.CalorieMax" />
+        </div>
+
+        <h4>Price Range</h4>
+        <div>
+            Between
+            <input name="PriceMin" type="number" min="0" max="20" step="0.01" placeholder="min" value="@Model.PriceMin" />
+            and
+            <input name="PriceMax" type="number" min="0" max="20" step="0.01" placeholder="max" value="@Model.PriceMax" />
+        </div>
+    </div>
+    <div id="menu">
+        <div id="Entrees" class="entree-div category">
+            <h2 class="category-name">Entrees</h2>
+            <ul>
+                @foreach (BuildYourBowl.Data.IMenuItem m in Model.MenuItems)
+                {
+                    if(m is BuildYourBowl.Data.Entree) 
+                    {
+                        <li class="item-selection">
+                            <p class="name text-item">@m.Name</p>
+                            <ul>
+                                @if (@m.PreparationInformation != null)
+                                {
+                                    @foreach (string s in @m.PreparationInformation)
+                                    {
+                                        <li>
+                                            <p class="text-item">@s</p>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <p class="price text-item">@m.Price</p>
+                            <p class="calories text-item">@m.Calories</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="ingredients-div category">
+            <h2 class="category-name">Ingredients</h2>
+            <div class="tables">
+                <table id="ingredients-table">
+                    <tr>
+                        <th class="box-item ingredients-name">Name</th>
+                        <th class="box-item ingredients-cals">Calories</th>
+                        <th class="box-item ingredients-cost">Additional Cost (build-your-owns)</th>
+                    </tr>
+                    @foreach (BuildYourBowl.Data.IngredientItem i in Model.Ingredients)
+                    {
+                        <tr>
+                            <td class="box-item ingredients-name">@i.Name</td>
+                            <td class="box-item ingredients-cals">@i.Calories</td>
+                            <td class="box-item ingredients-cost">$@i.UnitCost</td>
+                        </tr>
+                    }
+                </table>
+                <table id="salsa-table">
+                    <tr>
+                        <th class="box-item salsa-name">Salsa Choice</th>
+                    </tr>
+                    @foreach (BuildYourBowl.Data.Salsa i in Model.Salsas)
+                    {
+                        <tr>
+                            <td class="box-item salsa-name">@i.ToString()</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div id="Sides" class="side-div category">
+            <h2 class="category-name">Sides</h2>
+            <ul>
+                @foreach (BuildYourBowl.Data.IMenuItem m in Model.MenuItems)
+                {
+                    @if(m is BuildYourBowl.Data.Side)
+                    {
+                        <li class="item-selection">
+                            <p class="name text-item">@m.Name</p>
+                            <ul>
+                                @if (@m.PreparationInformation != null)
+                                {
+                                    @foreach (string s in @m.PreparationInformation)
+                                    {
+                                        <li>
+                                            <p class="text-item">@s</p>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <p class="price text-item">@m.Price</p>
+                            <p class="calories text-item">@m.Calories</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div id="Drinks" class="drink-div category">
+            <h2 class="category-name">Drinks</h2>
+            <ul>
+                @foreach (BuildYourBowl.Data.IMenuItem m in Model.MenuItems)
+                {
+                    @if(m is BuildYourBowl.Data.Drink)
+                    {
+                        <li class="item-selection">
+                            <p class="name text-item">@m.Name</p>
+                            <ul>
+                                @if (@m.PreparationInformation != null)
+                                {
+                                    @foreach (string s in @m.PreparationInformation)
+                                    {
+                                        <li>
+                                            <p class="text-item">@s</p>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <p class="price text-item">@m.Price</p>
+                            <p class="calories text-item">@m.Calories</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div id="Kids-Meals" class="kids-meal-div category">
+            <h2 class="category-name">Kids Meals</h2>
+            <ul>
+                @foreach (BuildYourBowl.Data.IMenuItem m in Model.MenuItems)
+                {
+                    if(m is BuildYourBowl.Data.KidsMeal)
+                    {
+                        <li class="item-selection">
+                            <p class="name text-item">@m.Name</p>
+                            <ul>
+                                @if (@m.PreparationInformation != null)
+                                {
+                                    @foreach (string s in @m.PreparationInformation)
+                                    {
+                                        <li>
+                                            <p class="text-item">@s</p>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <p class="price text-item">@m.Price</p>
+                            <p class="calories text-item">@m.Calories</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</form>

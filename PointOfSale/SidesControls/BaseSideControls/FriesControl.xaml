@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="BuildYourBowl.PointOfSale.FriesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BuildYourBowl.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="266">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="10,10,0,0" FontSize="20" Grid.Row="0" Text="{Binding Path=Name}"/>
+        <TextBlock Margin="10,10,0,0" Grid.Row="1" Text="{Binding Path=Description}"/>
+        <ComboBox FontSize="20" Margin="10,20,10,20" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=SizeType, Mode=TwoWay}"/>
+        <CheckBox x:Name="CurlyBox" Margin="10,10,5,5" Grid.Row="3" FontSize="15" IsChecked="{Binding Path=Curly}">Curly</CheckBox>
+        <DockPanel Margin="10,10,0,0" Grid.Row="4">
+            <TextBlock>Calories: </TextBlock>
+            <TextBlock Margin="20,0,0,0" Text="{Binding Path=Calories}"/>
+        </DockPanel>
+    </Grid>
+</UserControl>
